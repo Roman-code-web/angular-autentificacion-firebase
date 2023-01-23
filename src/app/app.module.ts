@@ -8,7 +8,9 @@ import { Environment } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
+import { ComponentesModule } from './componentes/componentes.module';
+import { PagesModule } from './pages/pages.module';
+
 
 var config={ 
         apiKey: Environment.firebase.apiKey,
@@ -22,11 +24,12 @@ var config={
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ComponentesModule,
+    PagesModule,
     provideFirebaseApp(()=>initializeApp(Environment.firebase)),
     provideAuth(()=>getAuth())
   ],
