@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UsuarioService } from 'src/app/servicios/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,7 @@ export class LoginComponent {
 
   formlogin!:FormGroup;
 
-  constructor(private formloginBuilder : FormBuilder){
+  constructor(private formloginBuilder : FormBuilder, private userService : UsuarioService , private router : Router ){
     this.formlogin=formloginBuilder.group({
       email:['',
       Validators.required
@@ -21,6 +23,18 @@ export class LoginComponent {
     })
   }
   login(){
-    console.log(this.formlogin.value)
+    this.userService.loginUsuario(this.formlogin.value)
+    .then(
+      res=>{
+          console.log(res);
+          this.router.navigate(['/home']);
+          }
+    )
+    .catch(
+      error=> {
+        console.log(error);
+      }
+      
+    )
   }
 }
