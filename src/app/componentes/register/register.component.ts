@@ -15,11 +15,16 @@ export class RegisterComponent {
   constructor(private formRegisBuilder: FormBuilder, private usuarioService:UsuarioService, private router:Router){
     
     this.formRegistroUser=formRegisBuilder.group({
-      email:['',
-      Validators.required
+      email:['',[
+        Validators.required,
+        Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
+      ]
+      
       ],
-      password:['',
-      Validators.required
+      password:['',[
+        Validators.required,
+        Validators.minLength(6)
+      ]
       ],
     })
 
@@ -38,5 +43,10 @@ export class RegisterComponent {
         console.log(error);
       }
     )
+  }
+
+   //validacion formulario
+   validacion(name: string) {
+    return this.formRegistroUser.get(name)?.errors && (this.formRegistroUser.get(name)?.touched || this.formRegistroUser.get(name)?.dirty);
   }
 }

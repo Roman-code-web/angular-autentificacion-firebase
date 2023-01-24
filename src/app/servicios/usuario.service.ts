@@ -6,8 +6,7 @@ import {AngularFireAuth} from '@angular/fire/compat/auth'
   providedIn: 'root'
 })
 export class UsuarioService {
-  usuario!:string;
-  logeado=false;
+  usuario:any=[];
   //auth
   constructor( private auth : Auth  , private authAngular : AngularFireAuth ) { }
 

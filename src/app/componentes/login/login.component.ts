@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -10,33 +11,50 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
 })
 export class LoginComponent {
 
+  mensajeerror={
+    email:'',
+    password:''
+  };
   formlogin!:FormGroup;
 
   constructor(private formloginBuilder : FormBuilder, private userService : UsuarioService , private router : Router ){
+
     this.formlogin=formloginBuilder.group({
       email:['',
-      Validators.required
+      [
+        Validators.required,
+        Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
+      ]
       ],
       password:['',
-      Validators.required
+      [
+        Validators.required,
+        Validators.minLength(6)
+      ]
       ],
     })
+
   }
+
+
   login(){
     this.userService.loginUsuario(this.formlogin.value)//envio datos del formulario
     .then(
       res=>{
-            localStorage.setItem('user', JSON.stringify({ usuario:res.user.email, uid:res.user.uid}));//almaceno el localstorage
             this.router.navigate(['/home']);
           }
     )
     .catch(
       error=> {
-        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'usuario y contraseña incorrecta',
+        })
       }
       
     )
   }
+
   loginGoogle(){
     this.userService.loginGoogle()
     .then(
@@ -50,5 +68,10 @@ export class LoginComponent {
         console.log(error);
       }
     )
+  }
+
+  //validacion formulario
+  validacion(name: string) {
+    return this.formlogin.get(name)?.errors && (this.formlogin.get(name)?.touched || this.formlogin.get(name)?.dirty);
   }
 }

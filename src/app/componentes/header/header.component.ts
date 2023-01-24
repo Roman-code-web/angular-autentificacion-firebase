@@ -8,10 +8,10 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent   {
   user:any=[];
   constructor(public userservice : UsuarioService, private router:Router){}
- 
+
   userlogeado=this.userservice.getUsuario().subscribe(
     res=>{
       this.user=res;
@@ -20,6 +20,7 @@ export class HeaderComponent {
       console.log(error);
     }
   )
+
 
   logout(){
     this.userservice.logout()

@@ -11,25 +11,36 @@
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="mb-3">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="email" placeholder="email" formControlName="email">
+                                    <input type="text" class="form-control" [class.is-invalid]="validacion('email')" id="email" placeholder="email" formControlName="email">
                                     <label for="email">Email</label>
                                 </div>
+                                <div class="py-2" *ngIf="validacion('email')">
+                                    <p class="text-danger pb-0 mb-0">Email invalido </p> 
+                                </div>
                             </div>
+                            
                         </div>
                         <!------contraseña------>
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="mb-3">
                                 <div class="form-floating">
-                                    <input type="password" class="form-control" id="pass" placeholder="password" formControlName="password">
+                                    <input type="password" [class.is-invalid]="validacion('password')" class="form-control" id="pass" placeholder="password" formControlName="password">
                                     <label for="pass">Constraseña</label>
                                 </div>
+                                <div class="py-2" *ngIf="validacion('password')">
+                                    <p class="text-danger pb-0 mb-0">Mínimo 6 caracteres </p> 
+                                </div>
                             </div>
+                           
                         </div>
                     </div>
                    
                     
                     <div class="mb-3 d-flex justify-content-center">
                         <button [disabled]="formRegistroUser.invalid" class="btn btn-primary w-100">Registrar</button>
+                    </div>
+                    <div class="mb-3 d-flex justify-content-center">
+                        <p>Ya tienes una cuenta? <a routerLink="/login">Ir a login</a> </p>
                     </div>
                   </form>
             </div>
