@@ -8,8 +8,9 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent   {
+export class HeaderComponent    {
   user:any=[];
+  logeado=false;
   constructor(public userservice : UsuarioService, private router:Router){}
 
   userlogeado=this.userservice.getUsuario().subscribe(
