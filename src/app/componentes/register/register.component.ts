@@ -7,12 +7,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  
   formRegistroUser!:FormGroup;
+
   constructor(private formRegisBuilder: FormBuilder){
+    
     this.formRegistroUser=formRegisBuilder.group({
-      nombre:['',
-      Validators.required
-      ],
       email:['',
       Validators.required
       ],
@@ -20,6 +20,7 @@ export class RegisterComponent {
       Validators.required
       ],
     })
+
   }
   registrarUsuario(){
     console.log(this.formRegistroUser.value)
