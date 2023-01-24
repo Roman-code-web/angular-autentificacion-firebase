@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
@@ -8,19 +8,14 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent    {
+export class HeaderComponent  implements OnInit   {
   user:any=[];
   logeado=false;
   constructor(public userservice : UsuarioService, private router:Router){}
 
-  userlogeado=this.userservice.getUsuario().subscribe(
-    res=>{
-      this.user=res;
-    },
-    error=>{
-      console.log(error);
-    }
-  )
+  ngOnInit(): void {
+    
+  }
 
 
   logout(){

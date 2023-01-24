@@ -7,13 +7,12 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 import { Environment } from 'src/environments/environment';
-
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentesModule } from './componentes/componentes.module';
 import { PagesModule } from './pages/pages.module';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
-
 
 var config={ 
         apiKey: Environment.firebase.apiKey,
@@ -33,6 +32,7 @@ var config={
     AppRoutingModule,
     ComponentesModule,
     PagesModule,
+    AngularFireAuthModule,
     provideFirebaseApp(()=>initializeApp(Environment.firebase)),
     provideAuth(()=>getAuth()),
     provideFirestore(() => getFirestore()),

@@ -7,6 +7,7 @@ import {AngularFireAuth} from '@angular/fire/compat/auth'
 })
 export class UsuarioService {
   usuario:any=[];
+  logeado=false;
   //auth
   constructor( private auth : Auth  , private authAngular : AngularFireAuth ) { }
 
@@ -31,9 +32,29 @@ export class UsuarioService {
     return signOut(this.auth);
   }
 
-  //funcion usuario logeado
-  getUsuario(){
-    return this.authAngular.authState;
+  islogeado(){
+    if(localStorage.getItem('user')){
+      this.usuario=JSON.parse(String(localStorage.getItem('user')) );
+      this.logeado=true;
+      return true;
+    }else{
+      this.logeado=false;
+      return false;
+    }
   }
- 
+  /*funcion usuario logeado
+  getUsuario(){
+    return this.authAngular.authState.subscribe(
+      
+          res=>{
+            localStorage.setItem('user',JSON.stringify({'email':res?.email,'uid':res?.uid, 'photoURL':res?.photoURL}))
+            this.usuario= JSON.parse(String(localStorage.getItem('user')) ),
+            console.log(this.usuario.email )
+          },
+          error=>{
+            console.log(error);
+          }
+        )
+  }
+ */
 }

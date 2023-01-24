@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { ComponentesModule } from '../componentes/componentes.module';
 import { RegistroProductoComponent } from './registro-producto/registro-producto.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -15,7 +16,11 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ComponentesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
+  ],exports:[
+    HomeComponent,
+    RegistroProductoComponent
   ]
 })
 export class PagesModule { }

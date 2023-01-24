@@ -7,5 +7,4 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-constructor(public userservice:UsuarioService){}
 }

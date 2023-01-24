@@ -9,11 +9,19 @@
     background-color: #150050;
     color: #fff !important;
     margin: 0px 20px;
-
 }
 
 .link__active{
     background-color: #150050;
     color: #fff !important;
     margin: 0px 20px;
+}
+.card__img{
+    width: 30px; height: 30px; border-radius: 50%;
+}
+
+.dropdown-menu{
+    left: -203px;
+    width: auto;
+    min-width: 280px;
 }

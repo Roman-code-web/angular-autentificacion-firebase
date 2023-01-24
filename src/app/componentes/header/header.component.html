@@ -6,13 +6,32 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav__link__a nav-link" aria-current="page" routerLink="/registro" routerLinkActive="link__active" [routerLinkActiveOptions]="{exact:true}" *ngIf="!user">Registrar</a>
-                <a class="nav__link__a nav-link" aria-current="page" routerLink="/login" routerLinkActive="link__active" [routerLinkActiveOptions]="{exact:true}" *ngIf="!user">login</a>
-                <div class="container d-flex">
-                    <a class="nav-link"  *ngIf="user" >  <img style="width: 30px; height: 30px; border-radius: 50%;" *ngIf=" user?.photoURL" src="{{user?.photoURL}}" alt=""> {{user?.email}}</a>
-                </div>
-                <a class="nav__link__a btn btn-outline-primary"  routerLink="" routerLinkActive="link__active" [routerLinkActiveOptions]="{exact:true}" *ngIf="user" (click)="logout()">Logout</a>
+            <div class="navbar-nav d-flex align-items-center">
+               
+                  <a class="nav__link__a nav-link w-100" aria-current="page" routerLink="/registro" routerLinkActive="link__active" [routerLinkActiveOptions]="{exact:true}" *ngIf="!userservice.islogeado()">Registrar</a>
+                  <a class="nav__link__a nav-link w-100" aria-current="page" routerLink="/login" routerLinkActive="link__active" [routerLinkActiveOptions]="{exact:true}" *ngIf="!userservice.islogeado()">login</a>
+                  <a class="nav__link__a btn "  routerLink="/home" routerLinkActive="link__active" [routerLinkActiveOptions]="{exact:true}" *ngIf="userservice.islogeado()" >home</a>
+                  
+                <li class="d-flex  align-items-center nav-item " *ngIf="userservice.islogeado()">  
+                  <a class="nav__link__a btn "  routerLink="/productoRegistro" routerLinkActive="link__active" [routerLinkActiveOptions]="{exact:true}" *ngIf="userservice.islogeado()" >Registrar Producto</a>
+                </li>
+                <li class="nav-item dropdown" *ngIf="userservice.islogeado()">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img style="width: 30px; height: 30px; border-radius: 50%;"  src="{{userservice.usuario?.photoURL ? userservice.usuario?.photoURL : 'https://img.icons8.com/dusk/2x/name.png' }}" alt="">
+                  </a>
+                  <ul class="dropdown-menu listadesplegable">
+                    <li>
+                      <div class="card border-0" >
+                        <div class="container d-flex align-items-center py-3 gap-2">
+                          <img class="card__img "  src="{{userservice.usuario?.photoURL ? userservice.usuario?.photoURL : 'https://img.icons8.com/dusk/2x/name.png' }}" alt=""><p>{{userservice.usuario.email }}</p>
+                        </div>
+                        <div class="card-body d-flex justify-content-center">
+                          <a class="nav__link__a btn btn-outline-primary "  routerLink="" routerLinkActive="link__active" [routerLinkActiveOptions]="{exact:true}"  (click)="logout()">Logout</a>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </li>   
             </div>
           </div>
         </div>

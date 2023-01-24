@@ -41,6 +41,7 @@ export class LoginComponent {
     this.userService.loginUsuario(this.formlogin.value)//envio datos del formulario
     .then(
       res=>{
+            localStorage.setItem('user',JSON.stringify({'uid': res?.user.uid , 'email':res.user.email, 'photoURL':res.user?.photoURL }));
             this.router.navigate(['/home']);
           }
     )
@@ -59,6 +60,7 @@ export class LoginComponent {
     this.userService.loginGoogle()
     .then(
       res=>{
+        localStorage.setItem('user',JSON.stringify({'uid': res?.user.uid , 'email':res.user.email, 'photoURL':res.user?.photoURL }));
         console.log(res);
         this.router.navigate(['/home']);
       }

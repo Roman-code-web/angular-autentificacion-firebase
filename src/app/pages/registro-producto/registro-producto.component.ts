@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ProductosService } from 'src/app/servicios/productos.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { ProductosService } from 'src/app/servicios/productos.service';
 export class RegistroProductoComponent {
   formRegistroProducto!:FormGroup;
 
-  constructor(private formproductoBuilder : FormBuilder , private productoservice : ProductosService ){
+  constructor(private formproductoBuilder : FormBuilder , private productoservice : ProductosService , private router: Router ){
     this.formRegistroProducto=formproductoBuilder.group({
       nombre:['',
       [
@@ -31,8 +32,9 @@ export class RegistroProductoComponent {
   }
 
  async RegistrarProducto(){
-     console.log(this.formRegistroProducto.value)
-     const response = this.productoservice.addProducto(this.formRegistroProducto.value)
-     console.log(response)
+     console.log(this.formRegistroProducto.value);
+     const response = this.productoservice.addProducto(this.formRegistroProducto.value);
+     console.log(response);
+     this.router.navigate(['/home']);
   }
 }

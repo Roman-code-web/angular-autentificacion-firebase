@@ -2,7 +2,7 @@
     <div class="container  ">
         <div class="row d-flex justify-content-center">
             <div class="col-md-6 col-sm-8 col-xs-12">
-                <form [formGroup]="formRegistroUser" (submit)="registrarUsuario()" >
+                <form [formGroup]="formRegistroUser"  >
                     <div class="my-5">
                         <h2 class="text-center">REGISTRO</h2>
                     </div>
@@ -37,7 +37,7 @@
                    
                     
                     <div class="mb-3 d-flex justify-content-center">
-                        <button [disabled]="formRegistroUser.invalid" class="btn btn-primary w-100">Registrar</button>
+                        <button [disabled]="formRegistroUser.invalid" class="btn btn-primary w-100" (click)="registrarUsuario()">Registrar</button>
                     </div>
                     <div class="mb-3 d-flex justify-content-center">
                         <p>Ya tienes una cuenta? <a routerLink="/login">Ir a login</a> </p>
