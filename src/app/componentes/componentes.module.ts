@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { TablaProductoComponent } from './tabla-producto/tabla-producto.component';
 
 
 
@@ -12,7 +13,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     HeaderComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    TablaProductoComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { RouterModule } from '@angular/router';
   exports:[
     HeaderComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    TablaProductoComponent
   ]
 })
 export class ComponentesModule { }

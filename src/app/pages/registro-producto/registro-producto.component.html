@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="container  ">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6 col-sm-8 col-xs-12">
+                <form [formGroup]="formRegistroProducto"  >
+                    <div class="my-5">
+                        <h2 class="text-center">REGISTRO PRODUCTO</h2>
+                    </div>
+                    <div class="row">
+                        <!------nombre------>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="mb-3">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control"  id="nombre" placeholder="nombre" formControlName="nombre">
+                                    <label for="nombre">Nombre</label>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                        <!------costo------>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="mb-3">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="costo" placeholder="costo" formControlName="costo">
+                                    <label for="pass">Costo</label>
+                                </div>
+                                
+                            </div>
+                           
+                        </div>
+                        <!------foto------>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="mb-3">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="foto" placeholder="foto" formControlName="foto">
+                                    <label for="pass">Foto</label>
+                                </div>
+                                
+                            </div>
+                           
+                        </div>
+                    </div>
+                   
+                    
+                    <div class="mb-3 d-flex justify-content-center">
+                        <button [disabled]="formRegistroProducto.invalid" (click)="RegistrarProducto()" class="btn btn-primary w-100">Registrar</button>
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>  
+</div>

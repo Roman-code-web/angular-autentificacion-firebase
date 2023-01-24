@@ -4,11 +4,12 @@ import { LoginComponent } from './componentes/login/login.component';
 import { RegisterComponent } from './componentes/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { canActivate, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
-import { signInWithRedirect } from '@angular/fire/auth';
+import { RegistroProductoComponent } from './pages/registro-producto/registro-producto.component';
 const routes: Routes = [
   { path: "registro" , component:RegisterComponent },
   { path: "login" , component:LoginComponent },
   { path: "home" , component:HomeComponent, ...canActivate(()=> redirectUnauthorizedTo(['/login'])) },
+  { path: "productoRegistro" , component:RegistroProductoComponent, ...canActivate(()=> redirectUnauthorizedTo(['/login']))},
   { path: '**', pathMatch: 'full', redirectTo: '/login' },
 ];
 
