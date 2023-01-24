@@ -23,12 +23,11 @@ export class LoginComponent {
     })
   }
   login(){
-    this.userService.loginUsuario(this.formlogin.value)
+    this.userService.loginUsuario(this.formlogin.value)//envio datos del formulario
     .then(
       res=>{
-          console.log(res);
-          this.userService.logeado=true;
-          this.router.navigate(['/home']);
+            localStorage.setItem('user', JSON.stringify({ usuario:res.user.email, uid:res.user.uid}));//almaceno el localstorage
+            this.router.navigate(['/home']);
           }
     )
     .catch(
@@ -36,6 +35,20 @@ export class LoginComponent {
         console.log(error);
       }
       
+    )
+  }
+  loginGoogle(){
+    this.userService.loginGoogle()
+    .then(
+      res=>{
+        console.log(res);
+        this.router.navigate(['/home']);
+      }
+    )
+    .catch(
+      error=>{
+        console.log(error);
+      }
     )
   }
 }

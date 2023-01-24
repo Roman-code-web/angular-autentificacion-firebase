@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentesModule } from './componentes/componentes.module';
 import { PagesModule } from './pages/pages.module';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 
 
 var config={ 
@@ -33,7 +34,7 @@ var config={
     provideFirebaseApp(()=>initializeApp(Environment.firebase)),
     provideAuth(()=>getAuth())
   ],
-  providers: [],
+  providers: [{provide: FIREBASE_OPTIONS, useValue: Environment.firebase}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

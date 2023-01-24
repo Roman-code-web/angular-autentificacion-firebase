@@ -1,15 +1,18 @@
 <header>
     <nav class="navbar navbar-expand-lg bg-light px-3 border border-bottom-2">
         <div class="container-fluid">
-          <a class="navbar-brand fs-2 fw-bold" style="width: 50px;"  routerLink=""><img style="width: 100%;"src="https://img.icons8.com/dusk/2x/form.png" alt="">Guard</a>
+          <a class="navbar-brand fs-2 fw-bold" style="width: 50px;"  routerLink=""><img style="width: 100%;"src="https://img.icons8.com/dusk/2x/form.png" alt="">FIREBASE</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav__link__a nav-link" aria-current="page" routerLink="/registro" routerLinkActive="link__active" [routerLinkActiveOptions]="{exact:true}" *ngIf="!userservice.logeado">Registrar</a>
-                <a class="nav__link__a nav-link" aria-current="page" routerLink="/login" routerLinkActive="link__active" [routerLinkActiveOptions]="{exact:true}" *ngIf="!userservice.logeado">login</a>
-                <a class="nav__link__a btn btn-outline-primary"  routerLink="" routerLinkActive="link__active" [routerLinkActiveOptions]="{exact:true}" *ngIf="userservice.logeado" (click)="logout()">Logout</a>
+                <a class="nav__link__a nav-link" aria-current="page" routerLink="/registro" routerLinkActive="link__active" [routerLinkActiveOptions]="{exact:true}" *ngIf="!user">Registrar</a>
+                <a class="nav__link__a nav-link" aria-current="page" routerLink="/login" routerLinkActive="link__active" [routerLinkActiveOptions]="{exact:true}" *ngIf="!user">login</a>
+                <div class="container d-flex">
+                    <a class="nav-link"  *ngIf="user" >  <img style="width: 30px; height: 30px; border-radius: 50%;" *ngIf="user?.photoURL" src="{{user?.photoURL}}" alt=""> {{user?.email}}</a>
+                </div>
+                <a class="nav__link__a btn btn-outline-primary"  routerLink="" routerLinkActive="link__active" [routerLinkActiveOptions]="{exact:true}" *ngIf="user" (click)="logout()">Logout</a>
             </div>
           </div>
         </div>

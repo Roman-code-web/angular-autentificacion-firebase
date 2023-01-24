@@ -2,7 +2,7 @@
     <div class="container  ">
         <div class="row d-flex justify-content-center">
             <div class="col-md-6 col-sm-8 col-xs-12">
-                <form [formGroup]="formlogin" (submit)="login()" >
+                <form [formGroup]="formlogin"  >
                     <div class="my-5">
                         <h2 class="text-center">login</h2>
                     </div>
@@ -26,8 +26,13 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="mb-3 d-flex justify-content-center">
-                        <button [disabled]="formlogin.invalid" class="btn btn-primary w-100">login</button>
+                        <button [disabled]="formlogin.invalid" class="btn btn-primary w-100" (click)="login()">Ingresar</button>
+                    </div>
+                    <p class="text-center fs-5">o</p>
+                    <div class="mb-3 d-flex justify-content-center">
+                        <button  class="btn btn-outline-dark  w-100" (click)="loginGoogle()"><img class="ps-5 img__google"   src="https://img.icons8.com/color/2x/google-logo.png"  alt=""> Ingresar con Google </button>
                     </div>
                   </form>
             </div>
