@@ -27,6 +27,7 @@ export class LoginComponent {
     .then(
       res=>{
           console.log(res);
+          this.userService.logeado=true;
           this.router.navigate(['/home']);
           }
     )
