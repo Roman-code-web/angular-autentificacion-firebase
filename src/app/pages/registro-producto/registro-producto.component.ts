@@ -33,12 +33,17 @@ export class RegistroProductoComponent {
   }
 
  async RegistrarProducto(){
-     const response = this.productoservice.addProducto(this.formRegistroProducto.value);
-     Swal.fire({
-      icon: 'success',
-      title: 'Producto Agregado',
-    }).then((result) => {
-      this.router.navigate(['/home']);
-    })
+  try {
+    const response = this.productoservice.addProducto(this.formRegistroProducto.value);
+    Swal.fire({
+     icon: 'success',
+     title: 'Producto Agregado',
+   }).then((result) => {
+     this.router.navigate(['/home']);
+   })  
+  } catch (error) {
+    console.log(error);
+  }
+    
   }
 }

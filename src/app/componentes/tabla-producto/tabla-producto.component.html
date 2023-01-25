@@ -7,6 +7,7 @@
         <th scope="col">COSTO</th>
         <th scope="col">FOTO</th>
         <th scope="col">ELIMINAR</th>
+        <th scope="col">EDITAR</th>
       </tr>
     </thead>
     <tbody>
@@ -16,7 +17,76 @@
         <td>{{producto.nombre}}</td>
         <td>{{producto.costo}}</td>
         <td><img style="width: 40px;" src="{{producto.foto}}" alt=""></td>
-        <td><button class="btn btn-danger" (click)="eliminarProducto(producto)">Eliminar</button></td>
+        <td><button class="btn btn-danger" (click)="eliminarProducto(producto)"><i class="fa-solid fa-trash-can"></i></button></td>
+        <td><button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"(click)="getProductoID(i)" ><i class="fa-solid fa-pen-to-square"></i></button></td>
       </tr>
     </tbody>
   </table>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Producto</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-6 col-sm-8 col-xs-12">
+                        <form [formGroup]="formEditarProducto"  >
+                            <div class="row">
+                              <!------uid------>
+                              <div class="">
+                                <div class="mb-3">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" readonly id="uid" placeholder="uid" formControlName="uid">
+                                        <label for="uid">uid</label>
+                                    </div>
+                                </div>
+                            </div>
+                                <!------nombre------>
+                                <div class="">
+                                    <div class="mb-3">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control"  id="nombre" placeholder="nombre" formControlName="nombre">
+                                            <label for="nombre">Nombre</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!------costo------>
+                                <div class="">
+                                    <div class="mb-3">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="costo" placeholder="costo" formControlName="costo">
+                                            <label for="pass">Costo</label>
+                                        </div>
+                                        
+                                    </div>
+                                   
+                                </div>
+                                <!------foto------>
+                                <div class="">
+                                    <div class="mb-3">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="foto" placeholder="foto" formControlName="foto">
+                                            <label for="pass">Foto</label>
+                                        </div>
+                                    </div>                             
+                                </div>
+                            </div>
+                          </form>
+                    </div>
+                </div> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" [disabled]="formEditarProducto.invalid" (click)="editarProducto()" >Guardar Cambios</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
