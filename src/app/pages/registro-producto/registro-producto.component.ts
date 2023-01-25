@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductosService } from 'src/app/servicios/productos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro-producto',
@@ -32,9 +33,12 @@ export class RegistroProductoComponent {
   }
 
  async RegistrarProducto(){
-     console.log(this.formRegistroProducto.value);
      const response = this.productoservice.addProducto(this.formRegistroProducto.value);
-     console.log(response);
-     this.router.navigate(['/home']);
+     Swal.fire({
+      icon: 'success',
+      title: 'Producto Agregado',
+    }).then((result) => {
+      this.router.navigate(['/home']);
+    })
   }
 }
