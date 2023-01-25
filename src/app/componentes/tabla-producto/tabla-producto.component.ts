@@ -65,15 +65,12 @@ export class TablaProductoComponent implements OnInit{
     })
   }
   getProductoID(i:number){
-    
-   
     this.formEditarProducto.setValue({
       uid:this.listaProducto[i].id,
       nombre:this.listaProducto[i].nombre,
       costo:this.listaProducto[i].costo,
       foto:this.listaProducto[i].foto
     })
-   
   }
   editarProducto(){
    
