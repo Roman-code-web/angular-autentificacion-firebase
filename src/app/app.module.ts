@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 //-------
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
-
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 import { Environment } from 'src/environments/environment';
@@ -37,6 +36,7 @@ var config={
     provideAuth(()=>getAuth()),
     provideFirestore(() => getFirestore()),
   ],
+  
   providers: [{provide: FIREBASE_OPTIONS, useValue: Environment.firebase}],
   bootstrap: [AppComponent]
 })

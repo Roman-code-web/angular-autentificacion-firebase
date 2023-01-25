@@ -10,18 +10,15 @@ import Swal from 'sweetalert2';
   styleUrls: ['./tabla-producto.component.css']
 })
 export class TablaProductoComponent implements OnInit{
-
+  idProducto!:string;
+  Editado=false;
   listaProducto:any=[]
   formEditarProducto!:FormGroup;
 
   constructor( private productoservice : ProductosService, private formbuilder:FormBuilder){
 
     this.formEditarProducto=formbuilder.group({
-      uid:[{value: '', disabled: true},
-      [
-        Validators.required,
-      ]
-      ],
+ 
       nombre:['',
       [
         Validators.required
@@ -66,14 +63,18 @@ export class TablaProductoComponent implements OnInit{
   }
   getProductoID(i:number){
     this.formEditarProducto.setValue({
-      uid:this.listaProducto[i].id,
+      //id:this.listaProducto[i].id,
       nombre:this.listaProducto[i].nombre,
       costo:this.listaProducto[i].costo,
       foto:this.listaProducto[i].foto
     })
+    this.idProducto=this.listaProducto[i].id;
   }
   editarProducto(){
-   
-
+    const response = this.productoservice.editProducto(this.idProducto,this.formEditarProducto.value);
+    this.Editado=true;
+    setTimeout(() => {
+      this.Editado=false;
+    }, 2000);
   }
 }

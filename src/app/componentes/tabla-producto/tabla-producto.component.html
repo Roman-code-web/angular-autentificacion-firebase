@@ -1,3 +1,9 @@
+<div  style="height:70px;">
+  <div class="alert alert-success mb-5 text-center" role="alert" *ngIf="Editado">
+    <i class="fa-solid fa-circle-check"></i> Producto Modificado
+  </div>
+</div>
+
 <table class="table">
     <thead class="bg-primary bg-opacity-50">
       <tr  class="text-center">
@@ -6,8 +12,8 @@
         <th scope="col">NOMBRE</th>
         <th scope="col">COSTO</th>
         <th scope="col">FOTO</th>
-        <th scope="col">ELIMINAR</th>
         <th scope="col">EDITAR</th>
+        <th scope="col">ELIMINAR</th>
       </tr>
     </thead>
     <tbody>
@@ -17,8 +23,8 @@
         <td>{{producto.nombre}}</td>
         <td>{{producto.costo}}</td>
         <td><img style="width: 40px;" src="{{producto.foto}}" alt=""></td>
-        <td><button class="btn btn-danger" (click)="eliminarProducto(producto)"><i class="fa-solid fa-trash-can"></i></button></td>
         <td><button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"(click)="getProductoID(i)" ><i class="fa-solid fa-pen-to-square"></i></button></td>
+        <td><button class="btn btn-danger" (click)="eliminarProducto(producto)"><i class="fa-solid fa-trash-can"></i></button></td>
       </tr>
     </tbody>
   </table>
@@ -34,16 +40,8 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-6 col-sm-8 col-xs-12">
                         <form [formGroup]="formEditarProducto"  >
-                            <div class="row">
-                              <!------uid------>
-                              <div class="">
-                                <div class="mb-3">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" readonly id="uid" placeholder="uid" formControlName="uid">
-                                        <label for="uid">uid</label>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="row">
+                          
                                 <!------nombre------>
                                 <div class="">
                                     <div class="mb-3">
@@ -78,10 +76,11 @@
                     </div>
                 </div> 
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" [disabled]="formEditarProducto.invalid" (click)="editarProducto()" >Guardar Cambios</button>
+        <div class="modal-footer" >
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="formEditarProducto.invalid" (click)="editarProducto()" >Guardar Cambios</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
         </div>
       </div>
     </div>
   </div>
+ 
